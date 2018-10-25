@@ -5,52 +5,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>해커톤 템플릿 프로젝트123ㅓㅇ미ㅏ럼;ㅣ4</title>
-
+  <title>Number Baseball Game</title>
   <link rel="stylesheet" href="./index.scss">
 </head>
 
 <body>
-  <h1>해커톤 템플릿 프로젝트 :)</h1>
-  <div class="board">
-    <div class="row">
-      <div class="col"></div>
-      <div class="col"></div>
-      <div class="col"></div>
-      <div class="col"></div>
-      <div class="col"></div>
+  <div class="game">
+    <h1 class="game-title">
+      Number BaseballGame
+    </h1>
+    <div class="pitch">
+      <form class="pitch-input">
+        <input type="input" class="pitch-input__digit">
+        <input type="input" class="pitch-input__digit">
+        <input type="input" class="pitch-input__digit">
+        <button type="button" class="pitch-input__btn-pitch">시도</button>
+        <button type="button" class="pitch-input__btn-restart">다시 시작</button>
+      </form>
     </div>
-    <div class="row">
-      <div class="col"></div>
-      <div class="col"></div>
-      <div class="col"></div>
-      <div class="col"></div>
-      <div class="col"></div>
-    </div>
-    <div class="row">
-      <div class="col"></div>
-      <div class="col"></div>
-      <div class="col"></div>
-      <div class="col"></div>
-      <div class="col"></div>
-    </div>
-    <div class="row">
-      <div class="col"></div>
-      <div class="col"></div>
-      <div class="col"></div>
-      <div class="col"></div>
-      <div class="col"></div>
-    </div>
-    <div class="row">
-      <div class="col"></div>
-      <div class="col"></div>
-      <div class="col"></div>
-      <div class="col"></div>
-      <div class="col"></div>
-    </div>
+    <div class="turn-list"></div>
+    <div class="answer"></div>
   </div>
-  <div class="result"></div>
-  <button class="reset">재시작</button>
   <script src="./index.js"></script>
 </body>
 
