@@ -15,18 +15,24 @@
       Number BaseballGame
     </h1>
     <div class="pitch">
-      <form class="pitch-input">
-        <input type="input" class="pitch-input__digit">
-        <input type="input" class="pitch-input__digit">
-        <input type="input" class="pitch-input__digit">
-        <button type="button" class="pitch-input__btn-pitch">시도</button>
-        <button type="button" class="pitch-input__btn-restart">다시 시작</button>
-      </form>
-    </div>
-    <div class="turn-list"></div>
+     <div class="pitch-input">
+       <span class="pitch-input__message"></span>
+       <input type="text" class="pitch-input__digit">
+       <input type="text" class="pitch-input__digit">
+       <input type="text" class="pitch-input__digit">
+       <button type="button">Pitch</button>
+       <button type="button">Restart</button>
+     </div>
+   </div>
+   <div class="game-result">
+     <h2 class="game-result-title">Result</h2>
+     <ul class="game-result__list"></ul>
+   </div>
+    <ul class="turn-list"></ul>
     <div class="answer"></div>
   </div>
   <script src="./index.js"></script>
 </body>
 
 </html>
+
