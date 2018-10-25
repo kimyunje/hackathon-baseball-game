@@ -14,24 +14,45 @@
 const inputEL = document.querySelector(".pitch-input__digit");
 
 //렌덤 정답 생성하는 코드
-function randomDigit() {
-  const arr = [];
+function getRandomAnswer() {
+  const randomArr = [];
   do {
-    const random = Math.floor(Math.random() * 10);
-    if (!arr.includes(random)) {
-      arr.push(random);
+    const randomNum = Math.ceil(Math.random() * 9);
+    if (!randomArr.includes(randomNum)) {
+      randomArr.push(randomNum);
     }
-  } while (arr.length < 3);
-
-  return arr;
+  } while (randomArr.length < 3);
+  return randomArr;
 }
-randomDigit();
+getRandomAnswer();
 
-//정답을 입력된 숫자와 비교하는 코드
-inputEL.addEventListener(input, e => {});
+let randomAnswer = getRandomAnswer();
+// console.log(`randomAnswer: ${randomAnswer}`)
 
-//ball, strike를 알려주는 코드
+// 랜덤으로 받은 숫자가 문자열로 받은 숫자랑 비교
+// ball, strike를 알려주는 코드
 
-//맞았다, 틀렸다를 알려주는 코드
+function checkArray(arr) {
+  // 볼 점수 상태
+  let ball = 0;
+  // 스트라이크 점수 상태
+  let strike = 0;
+  for (i = 0; i < 3; i++) {
+    if (arr.includes(randomAnswer[i])) {
+      ball++;
+      if (arr.indexOf(randomAnswer[i]) === i) {
+        strike++;
+      }
+    }
+  }
+  // console.log(`checkArray: ${arr}`)
+  // console.log(`ball: ${ball}`)
+  // console.log(`strike: ${strike}`)
+  return ball === 0 && strike === 0 ? "OUT" : `${ball}B ${strike}S`;
+}
+
+checkArray([1, 2, 3]);
+
+//최종으로  틀렸는지 맞았는지 알려주는 코드
 
 //상태를 그려주는 코드
