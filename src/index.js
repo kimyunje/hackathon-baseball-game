@@ -131,6 +131,7 @@ buttonPitch.addEventListener("click", e => {
     render(pitchDigitsArray),
     gameResultList.firstChild
   );
+
   // 초기화
   for (let i = 0; i < 3; i++) {
     pitchDigitsArray[i] = null;
