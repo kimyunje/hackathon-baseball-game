@@ -11,9 +11,24 @@
 // + 시도 버튼을 눌러 확인
 // + 다시시작 버튼을 눌러 초기화
 
+const inputEL = document.querySelector(".pitch-input__digit");
+
 //렌덤 정답 생성하는 코드
+function randomDigit() {
+  const arr = [];
+  do {
+    const random = Math.floor(Math.random() * 10);
+    if (!arr.includes(random)) {
+      arr.push(random);
+    }
+  } while (arr.length < 3);
+
+  return arr;
+}
+randomDigit();
 
 //정답을 입력된 숫자와 비교하는 코드
+inputEL.addEventListener(input, e => {});
 
 //ball, strike를 알려주는 코드
 
