@@ -92,8 +92,8 @@ function render(arr) {
   // 내부 로직에서 구한 값 HTML 코드 추가
   txtEl.innerHTML =
     strike === 0 && ball === 0
-      ? `<em>OUT</em>`
-      : `<em>${ball}</em> B <em>${strike}</em> S`;
+      ? ` <em>OUT</em>`
+      : ` <em>${ball}</em> B <em>${strike}</em> S`;
   item.appendChild(txtEl);
   return item;
 }
@@ -152,18 +152,24 @@ buttonPitch.addEventListener("click", e => {
     gameResultList.insertBefore(
       render(pitchDigitsArray),
       gameResultList.firstChild
-    );
-  }
+      );
+    }
 
-  // 초기화
-  for (let i = 0; i < 3; i++) {
-    pitchDigitsArray[i] = null;
-    pitchDigits[i].value = null;
-    console.log("boo");
-  }
-  pitchDigits[0].focus();
-  // console.log(pitchDigitsArray);
-  count++;
+    // 초기화
+    for (let i = 0; i < 3; i++) {
+      pitchDigitsArray[i] = null;
+      pitchDigits[i].value = null;
+      console.log("boo");
+    }
+    pitchDigits[0].focus();
+    // console.log(pitchDigitsArray);
+    count++;
+    const rightEl = document.querySelector('.right')
+
+    if(count < 9 && strike ===3){
+      rightEl.classList.add('active')
+    }
+
 });
 
 buttonRestart.addEventListener("click", e => {
