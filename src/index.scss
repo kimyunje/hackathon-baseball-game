@@ -217,6 +217,14 @@ body {
   font-weight: 700;
 }
 
+hr {
+  border: none;
+  margin-top: -1px;
+  height: 1px;
+  background-color: #c0c8c9;
+  background-image: -webkit-linear-gradient(0deg, #fff, #c0c8c9, #fff);
+}
+
 //맞았을 때 뜨는 창
 .right{
   position: absolute;
@@ -248,4 +256,8 @@ body {
 
 .right.active{
   display: inline;
+}
+
+.logo {
+  animation-duration: 0.8s;
 }
