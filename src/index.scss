@@ -1,29 +1,300 @@
-// 변수를 만들어서 css사용가능
-$main-color: skyblue;
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,400,400i,700i");
 
+$point-color: #da1c5c;
+
+/* 스타일 초기화 */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 1em;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* *은 전체 선택자 */
+/* 우선 순위가 같을 때는 나중에 선언한 것이 남는다. 그래서 reset이 남는 것 */
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+main {
+  display: block;
+}
+/* block에 익스플로러 11호환 문제 때문에 main을 추가 할 것 */
+ul {
+  list-style-type: none;
+}
+/* 목록 사이의 기호를 생략한다. ol은 음성브라우저에서 읽어줄 때는 문제가 생긴다. */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/* cell spacing을 없애려고border spaceing으로 없앤다.
+셀간의 간격을 융합을 하기 위해서 border-collappse로 설정한다. */
+
+* {
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+//본문 스타일
 body {
-  background-color: $main-color;
+  // background-color: green;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+}
+// 배경이미지
+.img-bg1 {
+  background: url("image/bg1.png") no-repeat;
+}
+.img-bg2 {
+  background: url("image/bg2.png") no-repeat;
+}
+.img-bg3 {
+  background: url("image/bg3.png") no-repeat;
+}
+.img-bg4 {
+  background: url("image/bg4.png") no-repeat;
+}
+.img-bg5 {
+  background: url("image/bg5.png") no-repeat;
+}
+.img-bg6 {
+  background: url("image/bg6.png") no-repeat;
+}
+// 기본 레이아웃
+.game {
+  width: 900px;
+  height: calc(100vh - 73px);
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  padding: 10px;
+  position: relative;
+  margin-top: 27px;
 }
 
-.row {
-  display: flex;
+//제목
+.logo {
+  padding-top: 20px;
+  width: 400px;
+  height: 200px;
+  animation-duration: 0.8s;
+}
+//입력 메시지
+.pitch-message {
+  color: #fff;
+}
+//입력창
+.pitch {
+  width: 500px;
+  margin: 0 auto;
+}
+.pitch-input {
+  display: inline-block;
+  margin: 20px 0;
+  // background: #ff0;
+}
+.pitch-input__digit {
+  background: url("image/ball.svg") no-repeat;
+  background-size: 50px 50px;
+  border: none;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  border-radius: 50%;
+  margin: 0 10px;
+  &:active,
+  &:focus {
+    background: $point-color;
+  }
 }
 
-.col {
-  width: 30px;
-  height: 30px;
-  border: 1px solid black;
-  margin: 1px;
+//버튼
+.pitch-input button {
+  border: #fff 2px solid;
+  border-radius: 5px;
+  width: 90px;
+  height: 50px;
+  background: transparent;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700px;
+  font-size: 22px;
+  &:hover,
+  &:active,
+  &:focus {
+    border: $point-color 3px solid;
+    color: $point-color;
+  }
+}
+.pitch-input__btn-pitch {
+  margin: 0 10px 0 40px;
 }
 
-.col.checked {
-  background-color: black;
+//턴 마다 결과 표시창
+.game-result {
+  background-color: #fff;
+  border-radius: 5px;
+  width: 500px;
+  margin: 20px auto;
+  position: relative;
+}
+.game-result__title {
+  font-size: 25px;
+  font-weight: 700;
+  padding: 10px 0px;
 }
 
-.reset {
+hr {
+  border: none;
+  margin-top: -1px;
+  height: 1px;
+  background-color: #c0c8c9;
+  background-image: -webkit-linear-gradient(0deg, #fff, #c0c8c9, #fff);
+}
+
+//맞았을 때 뜨는 창
+.right {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: #000;
+  padding: 20px;
+  width: 900px;
+  min-height: 585px;
   display: none;
 }
+.right-title {
+  font-size: 60px;
+  color: #fff;
+  font-weight: 400;
+  margin-top: 100px;
+}
+.right-home {
+  border: #ffffff 2px solid;
+  border-radius: 5px;
+  height: 50px;
+  background: transparent;
+  color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700px;
+  font-size: 30px;
+  margin-top: 150px;
+}
 
-.reset.show {
-  display: inline-block;
+.right.active {
+  display: inline;
+}
+
+//javascript
+.count {
+  display: inline;
+  position: absolute;
+  left: 100px;
+}
+.txt {
+  display: inline;
+  position: absolute;
+  right: 100px;
+}
+.result-list {
+  padding: 10px;
 }
