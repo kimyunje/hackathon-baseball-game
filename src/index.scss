@@ -159,7 +159,7 @@ body {
 // 기본 레이아웃
 .game {
   width: 900px;
-  height: 820px;
+  height: calc(100vh - 73px);
   margin: 0 auto;
   background: rgba(0, 0, 0, 0.8);
   text-align: center;
@@ -295,6 +295,6 @@ hr {
   position: absolute;
   right: 100px;
 }
-.result-list{
+.result-list {
   padding: 10px;
 }
