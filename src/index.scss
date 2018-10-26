@@ -120,14 +120,14 @@ table {
 /* cell spacing을 없애려고border spaceing으로 없앤다.
 셀간의 간격을 융합을 하기 위해서 border-collappse로 설정한다. */
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-*:focus {
-  outline: none;
+* {
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
+  &:focus {
+    outline: none;
+  }
 }
 
 //본문 스타일
@@ -139,22 +139,22 @@ body {
 }
 // 배경이미지
 .img-bg1 {
-  background: url("image/bg1.png") no-repeat 100% 0;
+  background: url("image/bg1.png") no-repeat;
 }
 .img-bg2 {
-  background: url("image/bg2.png") no-repeat 100% 0;
+  background: url("image/bg2.png") no-repeat;
 }
 .img-bg3 {
-  background: url("image/bg3.png") no-repeat 100% 0;
+  background: url("image/bg3.png") no-repeat;
 }
 .img-bg4 {
-  background: url("image/bg4.png") no-repeat 100% 0;
+  background: url("image/bg4.png") no-repeat;
 }
 .img-bg5 {
-  background: url("image/bg5.png") no-repeat 100% 0;
+  background: url("image/bg5.png") no-repeat;
 }
 .img-bg6 {
-  background: url("image/bg6.png") no-repeat 100% 0;
+  background: url("image/bg6.png") no-repeat;
 }
 // 기본 레이아웃
 .game {
@@ -172,11 +172,11 @@ body {
   padding-top: 20px;
   width: 400px;
   height: 200px;
+  animation-duration: 0.8s;
 }
 //입력 메시지
-
 .pitch-message {
-  color: #ffffff;
+  color: #fff;
 }
 //입력창
 .pitch {
@@ -208,12 +208,12 @@ body {
 
 //버튼
 .pitch-input button {
-  border: #ffffff 2px solid;
+  border: #fff 2px solid;
   border-radius: 5px;
   width: 90px;
   height: 50px;
   background: transparent;
-  color: #ffffff;
+  color: #fff;
   font-family: "Roboto", sans-serif;
   font-weight: 700px;
   font-size: 22px;
@@ -229,9 +229,8 @@ body {
 }
 
 //턴 마다 결과 표시창
-
 .game-result {
-  background-color: #ffffff;
+  background-color: #fff;
   border-radius: 5px;
   width: 500px;
   margin: 20px auto;
@@ -256,7 +255,7 @@ hr {
   position: absolute;
   top: 0px;
   left: 0px;
-  background: #000000;
+  background: #000;
   padding: 20px;
   width: 900px;
   min-height: 585px;
@@ -264,7 +263,7 @@ hr {
 }
 .right-title {
   font-size: 60px;
-  color: #ffffff;
+  color: #fff;
   font-weight: 400;
   margin-top: 100px;
 }
@@ -284,17 +283,14 @@ hr {
   display: inline;
 }
 
-.logo {
-  animation-duration: 0.8s;
-}
 //javascript
-.count{
-  display : inline;
-  position : absolute;
-  left : 100px;
+.count {
+  display: inline;
+  position: absolute;
+  left: 100px;
 }
-.txt{
-  display : inline;
-  position : absolute;
-  right : 100px;
+.txt {
+  display: inline;
+  position: absolute;
+  right: 100px;
 }
