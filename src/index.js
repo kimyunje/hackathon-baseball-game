@@ -36,7 +36,7 @@ class BaseballGameLogic {
     return result;
   }
 
-
+//정답의 배열과 입력배열이 같을 때 homerun창을 띄워주는 코드
   rightAnswer(){
     if(this.randomStrike === pitchDigitsArray){
       rightEl.classList.add('active')
@@ -84,6 +84,7 @@ function gameInit() {
 function render(arr) {
   const { strike, ball } = game.checkArray(arr);
   const item = document.createElement("li");
+  item.classList.add('result-list')
 
   const countEl =document.createElement('div')
   countEl.innerHTML = `${count+1} 회`
