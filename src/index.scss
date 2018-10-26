@@ -139,18 +139,30 @@ body {
 }
 // 배경이미지
 .img-bg1 {
-  background: url("image/bg1.png") no-repeat;
+  background: url("image/bg1.png") no-repeat 100%;
+  background-position: 0 0;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
 }
 .img-bg2 {
-  background: url("image/bg2.png") no-repeat;
+  background: url("image/bg2.png") no-repeat 100%;
+  background-position: 0 0;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
 }
 .img-bg3 {
-  background: url("image/bg3.png") no-repeat;
+  background: url("image/bg3.png") no-repeat 100%;
+  background-position: 0 0;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
 }
 // 기본 레이아웃
 .game {
   width: 900px;
-  height: calc(100vh - 73px);
+  min-height: 90vh;
   margin: 0 auto;
   background: rgba(0, 0, 0, 0.8);
   text-align: center;
