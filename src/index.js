@@ -36,11 +36,11 @@ class BaseballGameLogic {
     return result;
   }
 
-//정답의 배열과 입력배열이 같을 때 homerun창을 띄워주는 코드
-  rightAnswer(){
-    if(this.randomStrike === pitchDigitsArray){
-      const rightEl = document.querySelector('.right')
-      rightEl.classList.add('active')
+  //정답의 배열과 입력배열이 같을 때 homerun창을 띄워주는 코드
+  rightAnswer() {
+    if (this.randomStrike === pitchDigitsArray) {
+      const rightEl = document.querySelector(".right");
+      rightEl.classList.add("active");
     }
   }
 }
@@ -61,20 +61,13 @@ const gameResultList = document.querySelector(".game-result__list");
 const reg = new RegExp(/[0-9]/);
 
 // 배경 이미지 배열
-const bgArr = [
-  "img-bg1",
-  "img-bg2",
-  "img-bg3",
-  "img-bg4",
-  "img-bg5",
-  "img-bg6"
-];
+const bgArr = ["img-bg1", "img-bg2", "img-bg3"];
 
 // 화면 초기화
 function gameInit() {
   game.init();
 
-  background.classList.add(bgArr[Math.floor(Math.random() * 6)]);
+  background.classList.add(bgArr[Math.floor(Math.random() * 3)]);
 
   // 랜덤 숫자 확인용
   console.log(...game.randomStrike);
@@ -86,12 +79,12 @@ function gameInit() {
 function render(arr) {
   const { strike, ball } = game.checkArray(arr);
   const item = document.createElement("li");
-  item.classList.add('result-list')
+  item.classList.add("result-list");
 
-  const countEl =document.createElement('div')
-  countEl.innerHTML = `${count+1} 회`
-  item.appendChild(countEl)
-  countEl.classList.add('count')
+  const countEl = document.createElement("div");
+  countEl.innerHTML = `${count + 1} 회`;
+  item.appendChild(countEl);
+  countEl.classList.add("count");
   // 입력 값 HTML 코드 추가
   for (let i = 0; i < 3; i++) {
     const el = document.createElement("span");
@@ -99,7 +92,7 @@ function render(arr) {
     item.appendChild(el);
   }
   const txtEl = document.createElement("div");
-  txtEl.classList.add('txt')
+  txtEl.classList.add("txt");
   // 내부 로직에서 구한 값 HTML 코드 추가
   txtEl.innerHTML =
     strike === 0 && ball === 0
@@ -165,26 +158,22 @@ buttonPitch.addEventListener("click", e => {
     gameResultList.appendChild(
       render(pitchDigitsArray),
       gameResultList.firstChild
-      );
-    }
+    );
+  }
 
-    // 초기화
-    for (let i = 0; i < 3; i++) {
-      pitchDigitsArray[i] = null;
-      pitchDigits[i].value = null;
-      console.log("boo");
-    }
-    pitchDigits[0].focus();
-    // console.log(pitchDigitsArray);
-    count++;
-
-
-
-
+  // 초기화
+  for (let i = 0; i < 3; i++) {
+    pitchDigitsArray[i] = null;
+    pitchDigits[i].value = null;
+    console.log("boo");
+  }
+  pitchDigits[0].focus();
+  // console.log(pitchDigitsArray);
+  count++;
 });
 
 //정답이면 홈런창을 띄워주는 코드
-game.rightAnswer()
+game.rightAnswer();
 
 buttonRestart.addEventListener("click", e => {
   gameInit();
