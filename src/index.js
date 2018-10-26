@@ -40,6 +40,7 @@ class BaseballGameLogic {
 // BaseballGameLogic 생성자를 통한 game 객체 생성
 const game = new BaseballGameLogic();
 const pitchDigitsArray = [null, null, null];
+const background = document.querySelector("body");
 const pitch = document.querySelector(".pitch");
 const pitchDigits = pitch.querySelectorAll(".pitch-input__digit");
 const pitchMessage = pitch.querySelector(".pitch-message");
@@ -51,8 +52,22 @@ const gameResultList = document.querySelector(".game-result__list");
 // 정규식 표현으로 [x-y] x~y 사이의 문자중에 하나를 찾습니다.
 const reg = new RegExp(/[0-9]/);
 
+// 배경 이미지 배열
+const bgArr = [
+  "img-bg1",
+  "img-bg2",
+  "img-bg3",
+  "img-bg4",
+  "img-bg5",
+  "img-bg6"
+];
+
+// 화면 초기화
 function gameInit() {
   game.init();
+
+  background.classList.add(bgArr[Math.floor(Math.random() * 6)]);
+
   // 랜덤 숫자 확인용
   console.log(...game.randomStrike);
   // 첫 인풋에 포커스를 넣어준다.
@@ -124,7 +139,7 @@ pitchDigits.forEach((item, index, arr) => {
 // 유효하지 않으면 동작하지 않음
 // pitchDigitsArray의 배열을 체크해서 생성된 난수 배열과 맞는지 확인
 // pitchDigitsArray 배열의 값을 초기화(null로)
-let count = 0
+let count = 0;
 //몇회인지 세는 변수
 buttonPitch.addEventListener("click", e => {
   // console.log(pitchDigitsArray);
@@ -133,8 +148,11 @@ buttonPitch.addEventListener("click", e => {
   }
 
   //게임이 9회까지만 실행되도록한다.
-  if(count<9){
-    gameResultList.insertBefore(render(pitchDigitsArray), gameResultList.firstChild);
+  if (count < 9) {
+    gameResultList.insertBefore(
+      render(pitchDigitsArray),
+      gameResultList.firstChild
+    );
   }
 
   // 초기화
@@ -145,7 +163,7 @@ buttonPitch.addEventListener("click", e => {
   }
   pitchDigits[0].focus();
   // console.log(pitchDigitsArray);
-  count++
+  count++;
 });
 
 buttonRestart.addEventListener("click", e => {
