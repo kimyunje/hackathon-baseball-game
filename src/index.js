@@ -1,6 +1,5 @@
+// BaseballGameLogic 생성자 정의
 class BaseballGameLogic {
-  randomStrike = [];
-
   // 초기화
   init() {
     this.randomStrike = this.getRandomArray();
@@ -38,6 +37,7 @@ class BaseballGameLogic {
   }
 }
 
+// BaseballGameLogic 생성자를 통한 game 객체 생성
 const game = new BaseballGameLogic();
 const pitchDigitsArray = [null, null, null];
 const pitch = document.querySelector(".pitch");
@@ -48,7 +48,8 @@ const buttonRestart = pitch.querySelector(".pitch-input__btn-restart");
 const gameResultList = document.querySelector(".game-result__list");
 
 // 숫자인지 확인하기 위해
-const reg = new RegExp(/[1-9]/);
+// 정규식 표현으로 [x-y] x~y 사이의 문자중에 하나를 찾습니다.
+const reg = new RegExp(/[0-9]/);
 
 function gameInit() {
   game.init();
@@ -109,7 +110,7 @@ pitchDigits.forEach((item, index, arr) => {
       // console.log(item.value);
     } else if (inputValue) {
       pitchMessage.classList.add("pitch-message--invalid");
-      pitchMessage.textContent = `유효한 수가 아닙니다. 1에서 9사이의 수를 입력해주세요.`;
+      pitchMessage.textContent = `유효한 수가 아닙니다. 0에서 9사이의 수를 입력해주세요.`;
     } else {
       removeValidMessage();
     }
