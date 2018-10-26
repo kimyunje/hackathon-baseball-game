@@ -71,13 +71,14 @@ function render(arr) {
     item.appendChild(el);
   }
   const txtEl = document.createElement("div");
+  txtEl.style.display = 'inline'
   txtEl.classList.add("txt");
 
   // 내부 로직에서 구한 값 HTML 코드 추가
   txtEl.innerHTML =
     strike === 0 && ball === 0
-      ? `<em>OUT</em>`
-      : `<em>${strike}</em> Strike <em>${ball}</em> Ball`;
+      ? ` <em>OUT</em>`
+      : ` <em>${ball}</em> Ball <em>${strike}</em> Strike `;
   item.appendChild(txtEl);
   return item;
 }
