@@ -235,6 +235,7 @@ body {
   border-radius: 5px;
   width: 500px;
   margin: 20px auto;
+  position: relative;
 }
 .game-result__title {
   font-size: 25px;
@@ -285,4 +286,15 @@ hr {
 
 .logo {
   animation-duration: 0.8s;
+}
+//javascript
+.count{
+  display : inline;
+  position : absolute;
+  left : 100px;
+}
+.txt{
+  display : inline;
+  position : absolute;
+  right : 100px;
 }

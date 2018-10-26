@@ -35,6 +35,13 @@ class BaseballGameLogic {
     console.log(result);
     return result;
   }
+
+
+  rightAnswer(){
+    if(this.randomStrike === pitchDigitsArray){
+      rightEl.classList.add('active')
+    }
+  }
 }
 
 // BaseballGameLogic 생성자를 통한 game 객체 생성
@@ -78,17 +85,20 @@ function render(arr) {
   const { strike, ball } = game.checkArray(arr);
   const item = document.createElement("li");
 
+  const countEl =document.createElement('div')
+  countEl.innerHTML = `${count+1} 회`
+  item.appendChild(countEl)
+  countEl.classList.add('count')
+
+
   // 입력 값 HTML 코드 추가
   for (let i = 0; i < 3; i++) {
     const el = document.createElement("span");
-    el.classList.add("digit");
     el.textContent = arr[i];
     item.appendChild(el);
   }
   const txtEl = document.createElement("div");
-  txtEl.style.display = "inline";
-  txtEl.classList.add("txt");
-
+  txtEl.classList.add('txt')
   // 내부 로직에서 구한 값 HTML 코드 추가
   txtEl.innerHTML =
     strike === 0 && ball === 0
@@ -150,7 +160,7 @@ buttonPitch.addEventListener("click", e => {
 
   //게임이 9회까지만 실행되도록한다.
   if (count < 9) {
-    gameResultList.insertBefore(
+    gameResultList.appendChild(
       render(pitchDigitsArray),
       gameResultList.firstChild
       );
@@ -167,11 +177,12 @@ buttonPitch.addEventListener("click", e => {
     count++;
     const rightEl = document.querySelector('.right')
 
-    if(count < 9 && strike ===3){
-      rightEl.classList.add('active')
-    }
+
 
 });
+
+//정답이면 홈런창을 띄워주는 코드
+game.rightAnswer()
 
 buttonRestart.addEventListener("click", e => {
   gameInit();
