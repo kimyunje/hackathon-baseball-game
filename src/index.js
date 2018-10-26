@@ -122,15 +122,18 @@ pitchDigits.forEach((item, index, arr) => {
 // 유효하지 않으면 동작하지 않음
 // pitchDigitsArray의 배열을 체크해서 생성된 난수 배열과 맞는지 확인
 // pitchDigitsArray 배열의 값을 초기화(null로)
+let count = 0
+//몇회인지 세는 변수
 buttonPitch.addEventListener("click", e => {
   // console.log(pitchDigitsArray);
   if (pitchDigitsArray.some(item => null || !reg.test(item))) {
     return false;
   }
-  gameResultList.insertBefore(
-    render(pitchDigitsArray),
-    gameResultList.firstChild
-  );
+
+  //게임이 9회까지만 실행되도록한다.
+  if(count<9){
+    gameResultList.insertBefore(render(pitchDigitsArray), gameResultList.firstChild);
+  }
 
   // 초기화
   for (let i = 0; i < 3; i++) {
@@ -140,6 +143,7 @@ buttonPitch.addEventListener("click", e => {
   }
   pitchDigits[0].focus();
   // console.log(pitchDigitsArray);
+  count++
 });
 
 buttonRestart.addEventListener("click", e => {
