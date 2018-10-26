@@ -148,13 +148,13 @@ body {
 }
 // 기본 레이아웃
 .game {
-  position: relative;
   width: 900px;
   height: 100vh;
   margin: 0 auto;
   background: rgba(0, 0, 0, 0.8);
   text-align: center;
   padding: 10px;
+  position: relative;
 }
 
 //제목
@@ -169,6 +169,10 @@ body {
   color: #ffffff;
 }
 //입력창
+.pitch {
+  width: 500px;
+  margin: 0 auto;
+}
 .pitch-input {
   display: inline-block;
   margin: 20px 0;
@@ -219,8 +223,35 @@ body {
   font-weight: 700;
 }
 
-.game {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+//맞았을 때 뜨는 창
+.right {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: #000000;
+  padding: 20px;
+  width: 900px;
+  min-height: 585px;
+  display: none;
+}
+.right-title {
+  font-size: 60px;
+  color: #ffffff;
+  font-weight: 400;
+  margin-top: 100px;
+}
+.right-home {
+  border: #ffffff 2px solid;
+  border-radius: 5px;
+  height: 50px;
+  background: transparent;
+  color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700px;
+  font-size: 30px;
+  margin-top: 150px;
+}
+
+.right.active {
+  display: inline;
 }
