@@ -1,4 +1,29 @@
+.img-bg1 {
+  background: url("image/bg1.png") no-repeat 100% 0;
+}
+.img-bg2 {
+  background: url("image/bg2.png") no-repeat 100% 0;
+}
+.img-bg3 {
+  background: url("image/bg3.png") no-repeat 100% 0;
+}
+.img-bg4 {
+  background: url("image/bg4.png") no-repeat 100% 0;
+}
+.img-bg5 {
+  background: url("image/bg5.png") no-repeat 100% 0;
+}
+.img-bg6 {
+  background: url("image/bg6.png") no-repeat 100% 0;
+}
+
 input {
   height: 30px;
   width: 30px;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
