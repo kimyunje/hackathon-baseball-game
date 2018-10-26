@@ -97,6 +97,8 @@ function render(arr) {
   txtEl.innerHTML =
     strike === 0 && ball === 0
       ? ` <em>OUT</em>`
+      :strike === 3
+      ?` <em>정답</em>`
       : ` <em>${ball}</em> B <em>${strike}</em> S`;
   item.appendChild(txtEl);
   return item;
