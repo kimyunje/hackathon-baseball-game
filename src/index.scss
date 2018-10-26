@@ -202,7 +202,9 @@ body {
   font-family: "Roboto", sans-serif;
   font-weight: 700px;
   font-size: 20px;
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     border: $point-color 2px solid;
     color: $point-color;
   }
