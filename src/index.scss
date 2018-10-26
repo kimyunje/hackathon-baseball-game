@@ -126,6 +126,10 @@ table {
   box-sizing: border-box;
 }
 
+*:focus {
+  outline: none;
+}
+
 //본문 스타일
 body {
   // background-color: green;
@@ -225,6 +229,7 @@ body {
 }
 
 //턴 마다 결과 표시창
+
 .game-result {
   background-color: #ffffff;
   border-radius: 5px;
@@ -234,6 +239,7 @@ body {
 .game-result__title {
   font-size: 25px;
   font-weight: 700;
+  padding: 10px 0px;
 }
 
 hr {
