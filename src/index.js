@@ -105,6 +105,7 @@ function removeValidMessage() {
 
 gameInit();
 
+// 숫자 입력 로직
 pitchDigits.forEach((item, index, arr) => {
   item.addEventListener("keyup", e => {
     // 입력은 한 글자만 받고 숫자만 입력받는다.

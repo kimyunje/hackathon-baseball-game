@@ -120,6 +120,12 @@ table {
 /* cell spacing을 없애려고border spaceing으로 없앤다.
 셀간의 간격을 융합을 하기 위해서 border-collappse로 설정한다. */
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 //본문 스타일
 body {
   // background-color: green;
@@ -179,16 +185,21 @@ body {
   // background: #ff0;
 }
 .pitch-input__digit {
-  background: url("image/ball.png") no-repeat;
+  background: url("image/ball.svg") no-repeat;
   background-size: 50px 50px;
-  background-position: 0 3px;
   border: none;
-  height: 52px;
+  height: 50px;
   width: 50px;
   text-align: center;
   font-family: "Roboto", sans-serif;
   font-size: 30px;
   font-weight: 800;
+  border-radius: 50%;
+  margin: 0 10px;
+  &:active,
+  &:focus {
+    background: $point-color;
+  }
 }
 
 //버튼
@@ -201,16 +212,16 @@ body {
   color: #ffffff;
   font-family: "Roboto", sans-serif;
   font-weight: 700px;
-  font-size: 20px;
+  font-size: 22px;
   &:hover,
   &:active,
   &:focus {
-    border: $point-color 2px solid;
+    border: $point-color 3px solid;
     color: $point-color;
   }
 }
 .pitch-input__btn-pitch {
-  margin: 0 10px 0 20px;
+  margin: 0 10px 0 40px;
 }
 
 //턴 마다 결과 표시창
