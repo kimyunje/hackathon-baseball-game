@@ -1,7 +1,7 @@
 // BaseballGameLogic 생성자 정의
 class BaseballGameLogic {
-  // 초기화
   init() {
+    // randomStrike에 getRandomArray() 담음
     this.randomStrike = this.getRandomArray();
   }
 
@@ -19,7 +19,6 @@ class BaseballGameLogic {
   }
 
   // 배열을 받아 구해놓은 랜덤 수랑 자리가 얼마나 일치하는 지 객체를 반환하는 함수
-  // 일치하는 수가 없으면 null을 반환
   checkArray(arr) {
     const result = {
       strike: 0,
@@ -32,7 +31,7 @@ class BaseballGameLogic {
         result.ball++;
       }
     }
-    console.log(result);
+    console.log("checkArray:", result);
     return result;
   }
 
@@ -47,12 +46,17 @@ class BaseballGameLogic {
 
 // BaseballGameLogic 생성자를 통한 game 객체 생성
 const game = new BaseballGameLogic();
+// 숫자 입력 배열
 const pitchDigitsArray = [null, null, null];
 const background = document.querySelector("body");
 const pitch = document.querySelector(".pitch");
+// 숫자 입력 input
 const pitchDigits = pitch.querySelectorAll(".pitch-input__digit");
+// 유효성 메시지 출력
 const pitchMessage = pitch.querySelector(".pitch-message");
+// 'pitch' 버튼
 const buttonPitch = pitch.querySelector(".pitch-input__btn-pitch");
+// 'restart' 버튼
 const buttonRestart = pitch.querySelector(".pitch-input__btn-restart");
 const gameResultList = document.querySelector(".game-result__list");
 
@@ -63,12 +67,11 @@ const reg = new RegExp(/[0-9]/);
 // 배경 이미지 배열
 const bgArr = ["img-bg1", "img-bg2", "img-bg3"];
 
-// 화면 초기화
+// 화면 첫화면
 function gameInit() {
   game.init();
-
+  // 배경 화면 램덤으로 그려줌
   background.classList.add(bgArr[Math.floor(Math.random() * 3)]);
-
   // 랜덤 숫자 확인용
   console.log(...game.randomStrike);
   // 첫 인풋에 포커스를 넣어준다.
@@ -80,7 +83,6 @@ function render(arr) {
   const { strike, ball } = game.checkArray(arr);
   const item = document.createElement("li");
   item.classList.add("result-list");
-
   const countEl = document.createElement("div");
   countEl.innerHTML = `${count + 1} 회`;
   item.appendChild(countEl);
@@ -97,9 +99,9 @@ function render(arr) {
   txtEl.innerHTML =
     strike === 0 && ball === 0
       ? ` <em>OUT</em>`
-      :strike === 3
-      ?` <em>정답</em>`
-      : ` <em>${ball}</em> B <em>${strike}</em> S`;
+      : strike === 3
+        ? ` <em>정답</em>`
+        : ` <em>${ball}</em> B <em>${strike}</em> S`;
   item.appendChild(txtEl);
   return item;
 }
@@ -115,31 +117,30 @@ gameInit();
 // 숫자 입력 로직
 pitchDigits.forEach((item, index, arr) => {
   item.addEventListener("keyup", e => {
-    // 입력은 한 글자만 받고 숫자만 입력받는다.
     const inputValue = item.value;
     if (
-      inputValue != null &&
+      inputValue !== null &&
       pitchDigitsArray.indexOf(inputValue) !== -1 &&
       pitchDigitsArray.indexOf(inputValue) !== index
     ) {
       pitchMessage.classList.add("pitch-message--invalid");
       pitchMessage.textContent = `중복되는 수입니다.`;
     } else if (
-      inputValue != null &&
-      (reg.test(inputValue) && inputValue.length === 1)
+      // 입력은 한 글자만 받고 숫자만 입력받는다.
+      // test() ㅡ 찾는 문자열이, 들어있는지 아닌지를 알려준다.
+      inputValue !== null &&
+      reg.test(inputValue) &&
+      inputValue.length === 1
     ) {
       pitchDigitsArray[index] = inputValue;
       item.nextElementSibling.focus();
       removeValidMessage();
-      // console.log(item.value);
     } else if (inputValue) {
       pitchMessage.classList.add("pitch-message--invalid");
       pitchMessage.textContent = `유효한 수가 아닙니다. 0에서 9사이의 수를 입력해주세요.`;
     } else {
       removeValidMessage();
     }
-    // console.log(pitchDigitsArray, inputValue,  pitchDigitsArray.includes(inputValue))
-    // 다음 입력으로 포커스 맞추기
   });
 });
 
@@ -147,10 +148,10 @@ pitchDigits.forEach((item, index, arr) => {
 // 유효하지 않으면 동작하지 않음
 // pitchDigitsArray의 배열을 체크해서 생성된 난수 배열과 맞는지 확인
 // pitchDigitsArray 배열의 값을 초기화(null로)
+// 몇회인지 세는 변수
 let count = 0;
-//몇회인지 세는 변수
 buttonPitch.addEventListener("click", e => {
-  // console.log(pitchDigitsArray);
+  // some - 조건을 만족하는 요소가 하나라도 있는 확인
   if (pitchDigitsArray.some(item => null || !reg.test(item))) {
     return false;
   }
@@ -163,20 +164,20 @@ buttonPitch.addEventListener("click", e => {
     );
   }
 
-  // 초기화
+  // 입력된 숫자 초기화
   for (let i = 0; i < 3; i++) {
     pitchDigitsArray[i] = null;
     pitchDigits[i].value = null;
-    console.log("boo");
   }
+  // 첫번째 input focus
   pitchDigits[0].focus();
-  // console.log(pitchDigitsArray);
   count++;
 });
 
 //정답이면 홈런창을 띄워주는 코드
 game.rightAnswer();
 
+//버튼 buttonRestart
 buttonRestart.addEventListener("click", e => {
   gameInit();
   // pitchDigits 비워준다. gameResultList도 비워줘야함
